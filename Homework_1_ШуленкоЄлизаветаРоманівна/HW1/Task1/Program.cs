@@ -12,7 +12,7 @@ class Program
 
         var price = b1.CountPrice();
 
-        Check.Print(p1);
-        Check.Print(b1);
+        Check.Print(p1, Console.WriteLine);
+        Check.Print(b1, Console.WriteLine);
     }
 }

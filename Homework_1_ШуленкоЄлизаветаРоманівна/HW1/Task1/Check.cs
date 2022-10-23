@@ -2,16 +2,14 @@
 {
     internal static class Check
     {
-        public static void Print(Buy buy)
+        public static void Print(Buy buy, Action<string> action)
         {
-            buy.ToString();
-            Console.WriteLine(buy);
+            action(buy.ToString());
         }
 
-        public static void Print(Product product)
+        public static void Print(Product product, Action<string> action)
         {
-            product.ToString();
-            Console.WriteLine(product);
+            action(product.ToString());
         }
     }
 }
