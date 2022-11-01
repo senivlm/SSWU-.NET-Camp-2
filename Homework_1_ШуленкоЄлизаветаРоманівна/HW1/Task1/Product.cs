@@ -10,7 +10,7 @@
         {
             new Product(String.Empty, default, default);
         }
-
+// Ви зможете покласти і від'ємні величини. А нам цього не треба.
         public Product(string name, double price, double weigth)
         {
             Name = name;
