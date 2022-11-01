@@ -1,7 +1,7 @@
 ﻿using Task1;
 
 class Program
-{
+{// Вітаю. Все доступно.
     static void Main(string[] args)
     {
         Product p1 = new Product("Apple", 10.00, 1.0);
