@@ -3,7 +3,7 @@
 namespace Task1
 {
     internal class Buy
-    {
+    {// Порушення інкапсуляції
         public List<Product> Products { get; set; }
         public int Amount { get { return Products.Count; } }
 
