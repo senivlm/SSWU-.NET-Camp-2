@@ -5,7 +5,6 @@ namespace Task1
     internal class Buy
     {
         public List<Product> Products { get; set; }
-        public int Amount { get { return Products.Count; } }
 
         public Buy()
         {
@@ -24,14 +23,12 @@ namespace Task1
 
         public double CountPrice()
         {
-            var totalPrice = 0.0;
+            return Products.Sum(m => m.Price);
+        }
 
-            foreach (var product in Products)
-            {
-                totalPrice += product.Price;
-            }
-
-            return totalPrice;
+        public int CountProduct(string productName)
+        {
+            return Products.Where(m => m.Name.ToLower() == productName.ToLower()).Count();
         }
 
         public override string ToString()

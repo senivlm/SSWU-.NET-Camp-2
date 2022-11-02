@@ -8,7 +8,7 @@
 
         public Product()
         {
-            new Product(String.Empty, default, default);
+
         }
 
         public Product(string name, double price, double weigth)
@@ -20,7 +20,7 @@
 
         public override string ToString()
         {
-            return $"Name: {this.Name}\tPrice: {this.Price}$\tWeight: {this.Weight}kg";
+            return $"Name: {Name}\tPrice: {Price}$\tWeight: {Weight}kg";
         }
     }
 }
