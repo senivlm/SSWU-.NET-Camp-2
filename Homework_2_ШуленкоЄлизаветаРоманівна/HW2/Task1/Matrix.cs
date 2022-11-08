@@ -7,7 +7,7 @@
             int[,] array = new int[rowCount, columnCount];
 
             for (int columnIndex = 0; columnIndex < columnCount; columnIndex++)
-            {
+            {//Можна оптимальніше
                 if (columnIndex % 2 == 0)
                 {
                     for (int rowIndex = 0; rowIndex < rowCount; rowIndex++)
