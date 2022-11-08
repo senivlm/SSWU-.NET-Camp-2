@@ -11,14 +11,14 @@
             for (int row = 0; row < rowCount; row++)
             {
                 for (int column = 0; column < columnCount; column++)
-                {
+                {// Чарівну константу треба виділити на рівень вище.
                     array[row, column] = rnd.Next(0, 17);
                 }
             }
 
             return array;
         }
-
+//Цей клас буде точно порушувати принцип SOLID.
         static public void DisplayMatrix(this int[,] array)
         {
             for (int i = 0; i < array.GetLength(0); i++)
@@ -68,7 +68,7 @@
                         count++;
                     }
                 }
-
+//а якщо найдовша підпослідовність вкінці стрічки, все спрацює?
                 sequences.Add(new Sequence
                 {
                     Value = value.Value,
