@@ -1,5 +1,5 @@
 ﻿namespace Task4
-{
+{// Молодець. Ще цей клас краще зробити generic(узагальненням!)
     public class Tensor
     {
         private class Dimension
