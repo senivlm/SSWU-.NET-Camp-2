@@ -41,7 +41,7 @@
         }
 
         static public bool HasSlot(this int[,,] cubeArray)
-        {
+        {// повтор логіки, якого можна уникнути
             for (int x = 0; x < cubeArray.GetLength(0); x++)
             {
                 for (int y = 0; y < cubeArray.GetLength(1); y++)
