@@ -5,15 +5,20 @@ namespace Task1
 {
     internal static class FileUtillity
     {
-        private static readonly string _inputFolderPath = @".\Input";
-        private static readonly string _outputFolderPath = @".\Output";
+        private static readonly string _inputFolderPath = @"..\..\Input";
+        private static readonly string _outputFolderPath = @"..\..\Output";
 
         private static CultureInfo _cultureInfo = new CultureInfo("uk-UA");
         private static DateTimeFormatInfo _dateTimeFormatInfo = _cultureInfo.DateTimeFormat;
 
-        public static List<Apartment> GetApartmentsPerQuarter(int quarter)
+        public static IEnumerable<Apartment> GetApartmentsPerQuarter(int quarter)
         {
             var apartments = new List<Apartment>();
+
+            if (!Directory.Exists(_inputFolderPath))
+            {
+                Directory.CreateDirectory(_inputFolderPath);
+            }
 
             var inputFilePathes = Directory.GetFiles(_inputFolderPath);
 
@@ -25,7 +30,7 @@ namespace Task1
             return apartments;
         }
 
-        public static List<Apartment> GetApartmentsFromFile(string filePath, int quarter)
+        public static IEnumerable<Apartment> GetApartmentsFromFile(string filePath, int quarter)
         {
             var result = new List<Apartment>();
 
@@ -57,26 +62,29 @@ namespace Task1
             return result;
         }
 
-        public static void FillReportFile(List<Apartment> apartments, int quarter, string? fileName = null)
+        public static void FillReportFile(IEnumerable<Apartment> apartments, int quarter, string? fileName = null)
         {
-            var report = GetQuarterReport(apartments, quarter);
+            var report = ApartmentUtillity.GetQuarterReport(apartments, quarter);
 
+            FillReportFile($"{fileName ?? $"report {DateTime.Now.ToString("dd.MM.yy")}"}.txt", report);
         }
 
-        public static string GetQuarterReport(List<Apartment> apartments, int quarter)
+        public static void FillReportFile(Apartment apartment, int quarter, string? fileName = null)
         {
-            var sb = new StringBuilder();
+            var report = ApartmentUtillity.GetQuarterReport(apartment, quarter);
 
-            sb.AppendLine($"Звіт за квартал {quarter}\n");
+            FillReportFile($"{fileName ?? $"report {DateTime.Now.ToString("dd.MM.yy")} Apartment #{apartment.Number}"}.txt", report);
+        }
 
-            sb.AppendLine($"Місяць: {_dateTimeFormatInfo.MonthGenitiveNames[quarter]} - {_dateTimeFormatInfo.MonthGenitiveNames[quarter + 2]}\n\n");
-
-            foreach (var apartment in apartments)
+        public static void FillReportFile(string fileName, string data)
+        {
+            if (!Directory.Exists(_outputFolderPath))
             {
-                sb.AppendLine(apartment.GetInfo());
+                Directory.CreateDirectory(_outputFolderPath);
             }
 
-            return sb.ToString();
+            File.WriteAllText($"{_outputFolderPath}\\{fileName}", data);
         }
+
     }
 }

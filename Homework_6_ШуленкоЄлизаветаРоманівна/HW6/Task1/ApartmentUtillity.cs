@@ -1,17 +1,19 @@
 ﻿using System.Globalization;
+using System.Text;
 
 namespace Task1
 {
     internal static class ApartmentUtillity
     {
         private static CultureInfo _cultureInfo = new CultureInfo("uk-UA");
+        private static DateTimeFormatInfo _dateTimeFormatInfo = _cultureInfo.DateTimeFormat;
 
         public static Apartment? CreateApartment(string line)
         {
             var data = line.Split('|');
 
             if (!int.TryParse(data[0], out int number)
-                || !int.TryParse(data[3], out int inputValue))
+                || !double.TryParse(data[3], out double inputValue))
             {
                 return null;
             }
@@ -43,6 +45,47 @@ namespace Task1
 
             return apartment;
         }
+
+        public static IEnumerable<Apartment> FindDebtors(IEnumerable<Apartment> apartments)
+        {
+            var result = apartments
+                .OrderByDescending(m => m.ElectricityMeter.GetTotalPrice())
+                .ThenBy(m => m.Owner)
+                .ThenBy(m => m.Number);
+
+            return result;
+        }
+
+        public static IEnumerable<Apartment> FindUnusedApartments(IEnumerable<Apartment> apartments)
+        {
+            var result = apartments
+                .Where(m => m.ElectricityMeter.GetTotalPrice() / ElectricityMeter.WATT_PRICE < 10)
+                .OrderBy(m => m.Number);
+
+            return result;
+        }
+
+        public static string GetQuarterReport(IEnumerable<Apartment> apartments, int quarter)
+        {
+            var sb = new StringBuilder();
+
+            sb.AppendLine($"Звіт за квартал {quarter}");
+
+            sb.AppendLine($"Місяць: {_dateTimeFormatInfo.MonthNames[quarter]} - {_dateTimeFormatInfo.MonthNames[quarter + 2]}\n");
+
+            foreach (var apartment in apartments)
+            {
+                sb.AppendLine(apartment.GetInfo());
+            }
+
+            return sb.ToString();
+        }
+
+        public static string GetQuarterReport(Apartment apartment, int quarter)
+        {
+            return GetQuarterReport(new List<Apartment> { apartment }, quarter);
+        }
+
 
         private static Tuple<DateTime, double>? ParseElectricyMetric(string dateString, string mectricString)
         {

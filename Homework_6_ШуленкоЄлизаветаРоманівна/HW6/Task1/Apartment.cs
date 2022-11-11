@@ -26,9 +26,10 @@ namespace Task1
         {
             var sb = new StringBuilder();
 
-            sb.AppendLine($"Квартира #{Number}, \tВласник:\t{Owner}");
+            sb.AppendLine($"Квартира #{Number}, Власник: {Owner}");
             sb.AppendLine("Показники лічильника:");
-            sb.AppendLine(ElectricityMeter.ToString());
+            sb.AppendLine(ElectricityMeter.GetInfo());
+            sb.AppendLine($"Вартість за квартал: {ElectricityMeter.GetTotalPrice()}");
 
             return sb.ToString();
         }
@@ -58,7 +59,7 @@ namespace Task1
             return $"Num: {Number}\tAddress: {Address}\t Owner: {Owner}\t ElectricityMeter: {ElectricityMeter}";
         }
 
-        private static int GetQuarter(this DateTime date)
+        private int GetQuarter(DateTime date)
         {
             return (date.Month + 2) / 3;
         }
