@@ -2,7 +2,7 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs
-/Homework_1_ШуленкоЄлизаветаРоманівна/HW1/.vs
-/Homework_1_ШуленкоЄлизаветаРоманівна/HW1/Task1/bin/Debug/net6.0
-/Homework_1_ШуленкоЄлизаветаРоманівна/HW1/Task1/obj
+/**/.vs
+/**/bin/Debug/net6.0
+/**/obj
+/Homework_6_ШуленкоЄлизаветаРоманівна/HW6/Task1/bin/Debug/Test.txt
