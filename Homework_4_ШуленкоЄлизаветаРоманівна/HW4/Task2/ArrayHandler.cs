@@ -25,7 +25,7 @@
         {
             return _array.GroupBy(m => m).ToDictionary(m => m.Key, m => m.Count());            
         }
-
+// Нам цього методу не треба
         public void DislayArray()
         {
             foreach (var item in _array)
@@ -65,7 +65,7 @@
                     primes = new List<int>();
                 }
             }
-
+// для 2 задорого сортувати всю послідовність. Вона може бути і великою.
             return sequences.OrderByDescending(m => m.Count());
         }
 
@@ -76,12 +76,12 @@
         }
 
         static private bool IsPrime(int number, int? i = null)
-        {
+        {// А чи доцільно рекурсивним способом?
             if (number == 0)
             {
                 return false;
             }
-
+// Пояснити умову
             if (!i.HasValue)
             {
                 i = number / 2;
