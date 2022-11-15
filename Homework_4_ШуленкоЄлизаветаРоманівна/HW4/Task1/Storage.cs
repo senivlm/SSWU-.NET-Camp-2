@@ -5,12 +5,12 @@
         private Product[] _products;
 
         public Storage()
-        {
+        {//Я б цю константу винесла з методу.
             _products = new Product[10];
         }
 
         public Product this[int index]
-        {
+        {// Що буде з не коректним індексом?
             get => _products[index];
             set => _products[index] = value;
         }
@@ -207,7 +207,7 @@
 
             return productWeight;
         }
-
+// Цього методу позбуваємось
         public void DisplayProducts()
         {
             foreach (var product in _products)
@@ -273,7 +273,7 @@
                 return false;
             }
             else
-            {
+            {// Це якщо однакові посилання?? А клон Ви вважаєте не еквівалентним?
                 Storage s = (Storage)obj;
                 return (_products == s._products);
             }
