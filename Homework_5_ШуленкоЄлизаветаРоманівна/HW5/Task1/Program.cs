@@ -1,7 +1,7 @@
 ﻿using Task1;
 
 class Program
-{
+{// Ваші бали 94	147	100	90	98
     static public void Main(String[] args)
     {
         Storage storage = new Storage();
