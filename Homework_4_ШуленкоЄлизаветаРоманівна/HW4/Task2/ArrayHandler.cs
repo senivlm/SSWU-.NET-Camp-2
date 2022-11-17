@@ -65,7 +65,7 @@
                     primes = new List<int>();
                 }
             }
-
+// Задорого сортувати всі для того, щоб вибрати тільки 2.
             return sequences.OrderByDescending(m => m.Count());
         }
 
@@ -76,7 +76,7 @@
         }
 
         static private bool IsPrime(int number, int? i = null)
-        {
+        {// Можна скоротити кількість операцій
             if (number == 0)
             {
                 return false;
