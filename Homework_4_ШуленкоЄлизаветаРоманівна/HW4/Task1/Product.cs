@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 
 namespace Task1
-{
+{// не правильна реалізація IComparer
     internal class Product : IComparer, IComparable
     {
         public string? Name { get; set; }
