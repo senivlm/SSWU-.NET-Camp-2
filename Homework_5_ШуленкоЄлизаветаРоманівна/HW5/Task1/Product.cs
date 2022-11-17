@@ -3,7 +3,7 @@
 namespace Task1
 {
     internal class Product : IComparer, IComparable
-    {
+    {// Не побачила, в  якій валюті визначена ціна.
         public string? Name { get; set; }
         public double Price { get; set; }
         public double Weight { get; set; }
